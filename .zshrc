@@ -100,7 +100,7 @@ source $ZSH/oh-my-zsh.sh
 alias leave="sudo pkill -u $USER"
 alias pipes="~/pipes.sh/pipes.sh"
 alias edisown="disown -a && exit"
-alias please='sudo $(fc -ln -1)'
+alias oof='sudo $(fc -ln -1)'
 alias psme='ps -ef | grep $USER --color=always '
 alias headphones='pacmd set-card-profile 4 output:analog-stereo'
 alias off='sudo shutdown -P now'
