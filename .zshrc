@@ -104,3 +104,9 @@ alias oof='sudo $(fc -ln -1)'
 alias psme='ps -ef | grep $USER --color=always '
 alias headphones='pacmd set-card-profile 4 output:analog-stereo'
 alias off='sudo shutdown -P now'
+alias matlab='sudo /usr/local/MATLAB/R2018b/bin/matlab'
+alias thinkorswim='sudo /opt/thinkorswim/thinkorswim'
+
+function ffind {
+    find / -name $1 2>/dev/null
+}
