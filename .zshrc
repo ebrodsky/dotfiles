@@ -106,6 +106,7 @@ alias headphones='pacmd set-card-profile 4 output:analog-stereo'
 alias off='sudo shutdown -P now'
 alias matlab='sudo /usr/local/MATLAB/R2018b/bin/matlab'
 alias thinkorswim='sudo /opt/thinkorswim/thinkorswim'
+alias vpn='sudo openconnect sds.oregonstate.edu'
 
 function ffind {
     find / -name $1 2>/dev/null
