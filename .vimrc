@@ -9,7 +9,7 @@ set incsearch
 set shiftwidth=4
 set expandtab
 set autoindent
-set smartindent
+set cindent
 set nocompatible
 set colorcolumn=100
 set smartcase
@@ -25,3 +25,5 @@ set hidden
 set noswapfile
 let g:netrw_liststyle=3
 let g:netrw_banner=0
+
+set background=dark

@@ -2,17 +2,17 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/ebrodsky/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="pygmalion"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
@@ -23,11 +23,16 @@ ZSH_THEME="pygmalion"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -39,6 +44,9 @@ ZSH_THEME="pygmalion"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -58,13 +66,11 @@ ZSH_THEME="pygmalion"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,9 +91,6 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -96,18 +99,37 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
+alias off='sudo shutdown -P now' #quick way to shut down PC
+alias pubip='curl https://ipinfo.io/ip' #get PC's public ip
+alias matlab='sudo /usr/local/MATLAB/R2022a/bin/matlab' #launch matlab as root
+alias poweropt='sudo ~/powertop_cmds.sh' #Fix bad parts in powertop output
+alias psme='ps -ef | grep $USER --color=always '
+alias vpn='sudo openconnect sds.oregonstate.edu'
 alias leave="sudo pkill -u $USER"
 alias pipes="~/pipes.sh/pipes.sh"
-alias edisown="disown -a && exit"
-alias oof='sudo $(fc -ln -1)'
-alias psme='ps -ef | grep $USER --color=always '
-alias headphones='pacmd set-card-profile 4 output:analog-stereo'
-alias off='sudo shutdown -P now'
-alias matlab='sudo /usr/local/MATLAB/R2018b/bin/matlab'
-alias thinkorswim='sudo /opt/thinkorswim/thinkorswim'
-alias vpn='sudo openconnect sds.oregonstate.edu'
 
 function ffind {
     find / -name $1 2>/dev/null
 }
+
+function intelify {
+    export http_proxy=http://proxy-chain.intel.com:911                                              
+    export https_proxy=http://proxy-chain.intel.com:911                                             
+    export ftp_proxy=http://proxy-chain.intel.com:911                                               
+    export socks_proxy=http://proxy-us.intel.com:1080                                               
+    export no_proxy=intel.com,.intel.com,localhost,127.0.0.1,10.0.0.0/8,192.168.0.0/16,172.16.0.0/12
+}
+
+function unintelify {
+    unset http_proxy
+    unset https_proxy
+    unset ftp_proxy
+    unset socks_proxy
+    unset no_proxy
+}
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/ebrodsky/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/ebrodsky/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/ebrodsky/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/ebrodsky/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
