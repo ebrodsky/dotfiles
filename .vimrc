@@ -13,7 +13,7 @@ set cindent
 set nocompatible
 set colorcolumn=100
 set smartcase
-set background=dark
+"set background=dark
 set laststatus=2
 set showcmd
 set wildmenu
@@ -26,4 +26,28 @@ set noswapfile
 let g:netrw_liststyle=3
 let g:netrw_banner=0
 
-set background=dark
+
+call plug#begin('~/.vim/plugged')
+    Plug 'arcticicestudio/nord-vim'
+    Plug 'rust-lang/rust.vim'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neoclide/coc-highlight'
+    Plug 'rust-lang/rust.vim'
+call plug#end()
+
+colorscheme nord
+
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
