@@ -13,7 +13,9 @@ set cindent
 set nocompatible
 set colorcolumn=100
 set smartcase
-"set background=dark
+
+set background=dark
+
 set laststatus=2
 set showcmd
 set wildmenu
@@ -40,6 +42,20 @@ colorscheme nord
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
+
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<TAB>"
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
