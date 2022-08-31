@@ -28,6 +28,7 @@ set noswapfile
 let g:netrw_liststyle=3
 let g:netrw_banner=0
 
+set backspace=indent,eol,start
 
 call plug#begin('~/.vim/plugged')
     Plug 'arcticicestudio/nord-vim'
