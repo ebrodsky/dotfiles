@@ -24,8 +24,11 @@ filetype plugin indent on
 set wildignore+=*.o,.git,CMakeFiles,CMakeCache.txt
 set hidden
 set noswapfile
+
 let g:netrw_liststyle=3
 let g:netrw_banner=0
+let g:netrw_browse_split = 4
+let g:netrw_winsize = 25
 
 set backspace=indent,eol,start
 
@@ -35,6 +38,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'neoclide/coc-highlight'
     Plug 'rust-lang/rust.vim'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 call plug#end()
 
 colorscheme nord
