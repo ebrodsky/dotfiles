@@ -33,7 +33,8 @@ let g:netrw_winsize = 25
 set backspace=indent,eol,start
 
 call plug#begin('~/.vim/plugged')
-    Plug 'arcticicestudio/nord-vim'
+    "Plug 'arcticicestudio/nord-vim'
+    Plug 'sainnhe/everforest' 
     Plug 'rust-lang/rust.vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'neoclide/coc-highlight'
@@ -41,7 +42,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 call plug#end()
 
-colorscheme nord
+colorscheme everforest
 
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1

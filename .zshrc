@@ -101,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias off='sudo shutdown -P now' #quick way to shut down PC
 alias pubip='curl https://ipinfo.io/ip' #get PC's public ip
-alias matlab='sudo /usr/local/MATLAB/R2022a/bin/matlab' #launch matlab as root
+alias matlab='xhost +SI:localuser:root && sudo /usr/local/MATLAB/R2022a/bin/matlab' #launch matlab as root
 alias poweropt='sudo ~/powertop_cmds.sh' #Fix bad parts in powertop output
 alias psme='ps -ef | grep $USER --color=always '
 alias vpn='sudo openconnect sds.oregonstate.edu'
@@ -133,3 +133,10 @@ if [ -f '/home/ebrodsky/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/hom
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/ebrodsky/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/ebrodsky/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="${HOME}/.fluvio/bin:${PATH}"
+source <(kubectl completion zsh)
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
+alias tmux="TERM=screen-256color-bce tmux"
+
