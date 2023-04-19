@@ -48,7 +48,7 @@ let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
 
 inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<TAB>"
-#Shift + K to show documentation for a function
+"Shift + K to show documentation for a function
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 "Allow scrolling through coc pop-ups with control+arrow keys
