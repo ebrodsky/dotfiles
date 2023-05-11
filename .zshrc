@@ -107,6 +107,8 @@ alias psme='ps -ef | grep $USER --color=always '
 alias vpn='sudo openconnect sds.oregonstate.edu'
 alias leave="sudo pkill -u $USER"
 alias pipes="~/pipes.sh/pipes.sh"
+alias vim='nvim'
+alias vf="fzf --print0 | xargs -0 -o vim"
 
 function ffind {
     find / -name $1 2>/dev/null
@@ -140,3 +142,5 @@ export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 alias tmux="TERM=screen-256color-bce tmux"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
